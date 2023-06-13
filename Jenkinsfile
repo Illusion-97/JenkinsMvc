@@ -23,10 +23,10 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat "docker stop jenkins-mvc:latest"
-                        bat "docker rm jenkins-mvc:latest"
+                        bat "docker stop jenkins-mvc"
+                        bat "docker rm jenkins-mvc"
                     } catch (Exception e) {
-                        echo '404 Not Found : jenkins-mvc:latest'
+                        echo '404 Not Found : jenkins-mvc'
                     }
                     bat "docker run --name jenkins-mvc -d -p 8075:8080 jenkins-mvc:latest"
                 }
