@@ -22,8 +22,12 @@ pipeline {
         stage('Deploy Docker Image') {
             steps {
                 script {
-                    bat "docker stop jenkins-mvc:latest"
-                    bat "docker rm jenkins-mvc:latest"
+                    try {
+                        bat "docker stop jenkins-mvc:latest"
+                        bat "docker rm jenkins-mvc:latest"
+                    } catch (Exception e) {
+                        echo '404 Not Found : jenkins-mvc:latest'
+                    }
                     bat "docker run --name jenkins-mvc -d -p 8075:8080 jenkins-mvc:${env.BUILD_NUMBER}"
                 }
             }
