@@ -28,7 +28,7 @@ pipeline {
                     } catch (Exception e) {
                         echo '404 Not Found : jenkins-mvc:latest'
                     }
-                    bat "docker run --name jenkins-mvc -d -p 8075:8080 jenkins-mvc:${env.BUILD_NUMBER}"
+                    bat "docker run --name jenkins-mvc -d -p 8075:8080 jenkins-mvc:latest"
                 }
             }
         }
