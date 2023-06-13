@@ -23,14 +23,5 @@ pipeline {
                 }
             }
         }
-        stage('Deploy Docker') {
-                environment {
-                  HOME="."
-                }
-            steps {
-                sh "docker stop JenkinsMvc || true && docker rm JenkinsMvc || true"
-                sh "docker run --name JenkinsMvc:latest -p 8075:8080"
-            }
-        }
     }
 }
