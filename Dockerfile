@@ -12,4 +12,4 @@ COPY src ./src
 
 EXPOSE 8080
 
-CMD ["./app/mvnw", "spring-boot:run"]
+CMD ["spring-boot:run"]
