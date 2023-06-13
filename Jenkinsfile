@@ -25,11 +25,15 @@ pipeline {
             }
         }
         stage('Build Docker') {
-            docker.build("JenkinsMvc:${env.BUILD_NUMBER}")
+            steps {
+                docker.build("JenkinsMvc:${env.BUILD_NUMBER}")
+            }
         }
         stage('Deploy Docker') {
-          sh "docker stop JenkinsMvc || true && docker rm JenkinsMvc || true"
-          sh "docker run --name JenkinsMvc -d -p 8075:8080 JenkinsMvc:${env.BUILD_NUMBER}"
-    }
+            steps{
+                sh "docker stop JenkinsMvc || true && docker rm JenkinsMvc || true"
+                sh "docker run --name JenkinsMvc -d -p 8075:8080 JenkinsMvc:${env.BUILD_NUMBER}"
+            }
+        }
     }
 }
