@@ -6,9 +6,11 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                bat "mvn --version"
+                script {
+                    dockerImage = docker.build('JenkinsMvc:latest')
+                }
             }
         }
     }
