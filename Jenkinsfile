@@ -35,8 +35,8 @@ pipeline {
                   HOME="."
                 }
             steps {
-                sh "docker stop JenkinsMvc || true && docker rm JenkinsMvc || true"
-                sh "docker run --name JenkinsMvc:latest -p 8075:8080"
+                // sh "docker stop JenkinsMvc || true && docker rm JenkinsMvc || true"
+                // sh "docker run --name JenkinsMvc:latest -p 8075:8080"
             }
         }
     }
