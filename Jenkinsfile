@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'eclipse-temurin:17-jdk-jammy' } }
+    agent { docker { image 'java-docker:latest' } }
 
     tools {
         maven "Maven 3.9.2"
