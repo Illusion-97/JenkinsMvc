@@ -10,6 +10,12 @@ pipeline {
             steps {
                 bat 'mvn clean package'
             }
+            post {
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
         }
         stage('Build Docker Image') {
             steps {
