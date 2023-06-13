@@ -22,7 +22,8 @@ pipeline {
         stage('Deploy Docker Image') {
             steps {
                 script {
-                    bat "docker stop jenkins-mvc || true && docker rm jenkins-mvc || true"
+                    bat "docker stop jenkins-mvc:latest"
+                    bat "docker rm jenkins-mvc:latest"
                     bat "docker run --name jenkins-mvc -d -p 8075:8080 jenkins-mvc:${env.BUILD_NUMBER}"
                 }
             }
