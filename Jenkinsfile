@@ -9,6 +9,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                // Build Test
                     dockerImage = docker.build('JenkinsMvc:latest')
                 }
             }
