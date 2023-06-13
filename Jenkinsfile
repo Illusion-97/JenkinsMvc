@@ -31,7 +31,10 @@ pipeline {
             }
         }
         stage('Deploy Docker') {
-            steps{
+                environment {
+                  HOME="."
+                }
+            steps {
                 sh "docker stop JenkinsMvc || true && docker rm JenkinsMvc || true"
                 sh "docker run --name JenkinsMvc -d -p 8075:8080 JenkinsMvc:${env.BUILD_NUMBER}"
             }
