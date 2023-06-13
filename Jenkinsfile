@@ -36,7 +36,7 @@ pipeline {
                 }
             steps {
                 sh "docker stop JenkinsMvc || true && docker rm JenkinsMvc || true"
-                sh "docker run --name JenkinsMvc -d -p 8075:8080 JenkinsMvc:${env.BUILD_NUMBER}"
+                sh "docker run --name JenkinsMvc:latest -p 8075:8080"
             }
         }
     }
