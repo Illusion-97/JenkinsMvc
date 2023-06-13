@@ -20,7 +20,6 @@ pipeline {
             }
         }
         stage('Deploy Docker Image') {
-            agent { docker { image 'jenkins-mvc:latest' } }
             steps {
                 script {
                     bat "docker stop jenkins-mvc || true && docker rm jenkins-mvc || true"
