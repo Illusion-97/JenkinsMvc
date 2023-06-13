@@ -1,15 +1,5 @@
-# syntax=docker/dockerfile:1
+FROM rsunix/yourkit-openjdk17
 
-FROM eclipse-temurin:17-jdk-jammy
-
-WORKDIR /app
-
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-# RUN ./mvnw dependency:resolve
-
-COPY src ./src
-
+ADD target/JenkinsMvc.jar JenkinsMvc.jar
+ENTRYPOINT ["java", "-jar","JenkinsMvc.jar"]
 EXPOSE 8080
-
-CMD ["spring-boot:run"]
