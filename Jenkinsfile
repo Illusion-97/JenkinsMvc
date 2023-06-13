@@ -2,8 +2,7 @@ pipeline {
     agent { docker { image 'eclipse-temurin:17-jdk-jammy' } }
 
     tools {
-        // Install the Maven version configured as "M3" and add it to the path.
-        maven "M3"
+        maven "Maven 3.9.2"
     }
 
     stages {
@@ -26,7 +25,9 @@ pipeline {
         }
         stage('Build Docker') {
             steps {
-                docker.build("JenkinsMvc:${env.BUILD_NUMBER}")
+                script {
+                    def dockerImage = docker.build("JenkinsMvc:${env.BUILD_NUMBER}")
+                }
             }
         }
         stage('Deploy Docker') {
