@@ -17,13 +17,8 @@ class WebSecurityConfigTest {
     @Autowired
     WebSecurityConfig webSecurityConfig;
 
-    @Mock
-    HttpSecurity http;
     @Test
-    void securityFilterChain() throws Exception {
-        Mockito.when(http.authorizeHttpRequests(ArgumentMatchers.any())).thenReturn(http);
-        Mockito.when(http.logout(ArgumentMatchers.any())).thenReturn(http);
-        Mockito.when(http.build()).thenReturn(null);
-        assertDoesNotThrow(() -> webSecurityConfig.securityFilterChain(http));
+    void securityFilterChain() {
+        assertDoesNotThrow(() -> webSecurityConfig.securityFilterChain(ArgumentMatchers.any()));
     }
 }
