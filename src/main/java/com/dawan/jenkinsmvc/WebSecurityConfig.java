@@ -13,7 +13,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests((request) -> request.anyRequest().permitAll())
+                .authorizeHttpRequests(request -> request.anyRequest().permitAll())
                 .logout(LogoutConfigurer::permitAll)
                 .build();
     }
